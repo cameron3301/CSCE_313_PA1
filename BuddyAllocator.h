@@ -54,7 +54,7 @@ private:
 	// also, the original header needs to be corrected
 
 
-ublic:
+public:
 	BuddyAllocator (int _basic_block_size, int _total_memory_length); 
 	/* This initializes the memory allocator and makes a portion of 
 	   ’_total_memory_length’ bytes available. The allocator uses a ’_basic_block_size’ as 
