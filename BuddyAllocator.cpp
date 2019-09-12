@@ -12,12 +12,7 @@ int f(int b, int s) {
     i++;
   }
 
-  if (total == s) { 
-    return i;
-  } else {
-    //throw validation error
-    return -1;  // TO-DO: replace with validation error
-  } 
+  return i;
 }
 
 
