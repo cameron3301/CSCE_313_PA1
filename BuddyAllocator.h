@@ -11,7 +11,13 @@ class BlockHeader{
 public:
 	// think about what else should be included as member variables
 	int block_size;  // size of the block
-	BlockHeader* next; // pointer to the next block
+	bool free;
+	BlockHeader* next; // pointer to the next 
+	BlockHeader(int b_s, bool f, BlockHeader* n) {
+		block_size = b_s;
+		free = f;
+		next = n;
+	}
 };
 
 class LinkedList{
@@ -20,11 +26,28 @@ public:
 	BlockHeader* head;		// you need a head of the list
 public:
 	void insert (BlockHeader* b){	// adds a block to the list
+		b->next = head;
+		head = b;
 
 	}
 
 	void remove (BlockHeader* b){  // removes a block from the list
+		if ((head == b) && (head != NULL)) {
+			head = b->next;
+			b->next = NULL;
+			break;
+		}
+		
+		BlockHeader* temp = head;
 
+		while (temp != NULL){
+			if (temp->next == b) {
+				temp->next = b->next;
+				b->next = NULL;
+				break;
+			}
+			temp = temp->next;
+		}
 	}
 };
 
@@ -34,6 +57,7 @@ private:
 	vector<LinkedList> FreeList;
 	int basic_block_size;
 	int total_memory_size;
+	char* memoryStart;
 
 private:
 	/* private function you are required to implement
@@ -44,6 +68,9 @@ private:
 	
 	bool arebuddies (BlockHeader* block1, BlockHeader* block2);
 	// checks whether the two blocks are buddies are not
+
+	bool hasbuddy (BlockHeader* addr);
+	// checks whether a block has a buddy
 
 	BlockHeader* merge (BlockHeader* block1, BlockHeader* block2);
 	// this function merges the two blocks returns the beginning address of the merged block
