@@ -31,11 +31,11 @@ public:
 
 	}
 
-	void remove (BlockHeader* b){  // removes a block from the list
+	BlockHeader* remove (BlockHeader* b){  // removes a block from the list
 		if ((head == b) && (head != NULL)) {
 			head = b->next;
 			b->next = NULL;
-			return;
+			return b;
 		}
 		
 		BlockHeader* temp = head;
@@ -44,7 +44,7 @@ public:
 			if (temp->next == b) {
 				temp->next = b->next;
 				b->next = NULL;
-				return;
+				return b;
 			}
 			temp = temp->next;
 		}
@@ -99,7 +99,7 @@ public:
 	/* Allocate _length number of bytes of free memory and returns the 
 		address of the allocated portion. Returns 0 when out of memory. */ 
 
-	int free(char* _a); 
+	void free(char* _a); 
 	/* Frees the section of physical memory previously allocated 
 	   using ’my_malloc’. Returns 0 if everything ok. */ 
    

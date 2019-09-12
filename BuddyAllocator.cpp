@@ -122,7 +122,7 @@ bool BuddyAllocator::arebuddies(BlockHeader * block1, BlockHeader * block2) {  /
 
 
 bool BuddyAllocator::hasbuddy(BlockHeader* addr) {
-  return (!(getbuddy(block1) == NULL));
+  return (!(getbuddy(addr) == NULL));
 }
 
 
