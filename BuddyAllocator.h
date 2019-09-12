@@ -35,7 +35,7 @@ public:
 		if ((head == b) && (head != NULL)) {
 			head = b->next;
 			b->next = NULL;
-			break;
+			return;
 		}
 		
 		BlockHeader* temp = head;
@@ -44,7 +44,7 @@ public:
 			if (temp->next == b) {
 				temp->next = b->next;
 				b->next = NULL;
-				break;
+				return;
 			}
 			temp = temp->next;
 		}
