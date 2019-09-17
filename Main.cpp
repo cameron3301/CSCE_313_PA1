@@ -64,13 +64,12 @@ int main(int argc, char ** argv) {
   int i = 0;
   char* temp = bbs;
   char* temp2 = ml;
-  while (i < 20) {
-    cout << *temp << " - " << *temp2 << endl;
-    i++;
-    temp++;
-    temp2++;
-  }
 
+  cout << temp << " - " << temp2 << endl;
+  cout << sizeof(temp) << " / " << sizeof(temp[0]) << endl;
+  cout << sizeof(temp2) << " / " << sizeof(temp2[0]) << endl;
+  i++;
+  
 
 
   /* 
