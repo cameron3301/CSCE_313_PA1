@@ -41,38 +41,34 @@ int strToInt(char* str) {
   return out;
 }
 
-void printOpt(char* str) {
-  for (char*p = str; p != str + (sizeof(str) / sizeof(str[0])); ++p) {
-    cout << *p << endl;
-  }
-}
-
 int main(int argc, char ** argv) {
 
   int opt;
-  int bbs, ml = 0;
+  char* bbs, ml;
 
-  while ((opt = getopt(argc, argv, "bs")) != -1) {
+  while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
       case 'b':
-        bbs = strToInt(optarg);
-        cout << "option b = ";
-        printOpt(optarg);
-        cout << endl;
-        cout << "bbs = " << bbs << endl;
+        bbs = optarg;
         break;
       case 's':
-        ml = strToInt(optarg);
-        cout << "option s = ";
-        printOpt(optarg);
-        cout << endl;
-        cout << "ml = " << ml << endl;
+        ml = optarg;
         break;
       case '?':
         cout << "oops" << endl;
         break;
     }
   }
+
+  int i = 0;
+  char* temp = bbs;
+  char* temp2 = ml
+  while (i < 20) {
+    cout << *temp << " - " << temp2 << endl;
+    i++;
+  }
+
+
 
   /* 
   int basic_block_size = 128, memory_length = 128 * 1024 * 1024;
