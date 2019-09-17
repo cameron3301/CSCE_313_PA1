@@ -48,10 +48,6 @@ BuddyAllocator::BuddyAllocator (int _basic_block_size, int _total_memory_length)
 
 
 BuddyAllocator::~BuddyAllocator (){
-  for (int i = FreeList.size()-1; i >= 0 ; i++) {
-    delete FreeList[i];
-  }
-
   delete [] memoryStart;
 }
 
