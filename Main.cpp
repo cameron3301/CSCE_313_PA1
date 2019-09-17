@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <unistd.h>
 #include "Ackerman.h"
 #include "BuddyAllocator.h"
 
@@ -19,6 +21,28 @@ void easytest(BuddyAllocator* ba){
 
 int main(int argc, char ** argv) {
 
+  int opt;
+  int bbs, ml = 0;
+
+  while ((opt = getopt(argc, argv, "bs")) != -1) {
+    switch(opt) {
+      case 'b':
+        bbs = optarg;
+        cout << "option b = " << optarg << endl;
+        cout << "bbs = " << bbs << endl;
+        break;
+      case 's':
+        ml = optarg;
+        cout << "option s = " << optarg << endl;
+        cout << "ml = " << ml << endl;
+        break;
+      case '?':
+        cout << "oops" << endl;
+        break;
+    }
+  }
+
+  /* 
   int basic_block_size = 128, memory_length = 128 * 1024 * 1024;
 
   // create memory manager
@@ -34,4 +58,5 @@ int main(int argc, char ** argv) {
   
   // destroy memory manager
   delete allocator;
+  */
 }
