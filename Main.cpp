@@ -69,8 +69,8 @@ int main(int argc, char ** argv) {
 
   string s1(temp);
   string s2(temp2);
-  cout << s1 << endl;
-  cout << s2 << endl << endl;
+  cout << s1 << " - " << s1.length() << endl;
+  cout << s2 << " - " << s2.length() << endl << endl;
 
   cout << temp << " - " << temp2 << endl;
   cout << sizeof(temp) << " / " << sizeof(temp[0]) << endl;
