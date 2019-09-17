@@ -67,8 +67,8 @@ int main(int argc, char ** argv) {
   char* temp = bbs;
   char* temp2 = ml;
 
-  string s1 = str(temp);
-  string s2 = str(temp2);
+  string s1(temp);
+  string s2(temp2);
   cout << s1 << endl;
   cout << s2 << endl << endl;
 
