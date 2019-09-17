@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <string>
 #include "Ackerman.h"
 #include "BuddyAllocator.h"
+using namespace std;
 
 void easytest(BuddyAllocator* ba){
   // be creative here
@@ -64,6 +66,11 @@ int main(int argc, char ** argv) {
   int i = 0;
   char* temp = bbs;
   char* temp2 = ml;
+
+  string s1 = str(temp);
+  string s2 = str(temp2);
+  cout << s1 << endl;
+  cout << s2 << endl << endl;
 
   cout << temp << " - " << temp2 << endl;
   cout << sizeof(temp) << " / " << sizeof(temp[0]) << endl;
