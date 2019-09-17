@@ -41,6 +41,12 @@ int strToInt(char* str) {
   return out;
 }
 
+void printOpt(char* str) {
+  for (char*p = str; p != str + (sizeof(str) / sizeof(str[0])); ++p) {
+    cout << *p << endl;
+  }
+}
+
 int main(int argc, char ** argv) {
 
   int opt;
@@ -49,13 +55,17 @@ int main(int argc, char ** argv) {
   while ((opt = getopt(argc, argv, "bs")) != -1) {
     switch(opt) {
       case 'b':
-        // bbs = strToInt(optarg);
-        cout << "option b = " << optarg << endl;
+        bbs = strToInt(optarg);
+        cout << "option b = ";
+        printOpt(optarg);
+        cout << endl;
         cout << "bbs = " << bbs << endl;
         break;
       case 's':
-        // ml = strToInt(optarg);
-        cout << "option s = " << optarg << endl;
+        ml = strToInt(optarg);
+        cout << "option s = ";
+        printOpt(optarg);
+        cout << endl;
         cout << "ml = " << ml << endl;
         break;
       case '?':
