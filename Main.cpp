@@ -44,7 +44,8 @@ int strToInt(char* str) {
 int main(int argc, char ** argv) {
 
   int opt;
-  char* bbs, ml;
+  char* bbs;
+  char* ml;
 
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
@@ -62,7 +63,7 @@ int main(int argc, char ** argv) {
 
   int i = 0;
   char* temp = bbs;
-  char* temp2 = ml
+  char* temp2 = ml;
   while (i < 20) {
     cout << *temp << " - " << temp2 << endl;
     i++;
