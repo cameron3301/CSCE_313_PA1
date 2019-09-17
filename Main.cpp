@@ -19,6 +19,26 @@ void easytest(BuddyAllocator* ba){
 
 }
 
+int strToInt(char* str) {
+  int char;
+  int out = 0;
+  int p = 1;
+
+  for (int i = str.length()-1; i >= 0; i--) {
+    char = str[i];
+
+    if (char < 48 || char > 57) {
+      // throw error
+      // input must be alpha-numeric
+    }
+
+    out += (char-48) * p;
+    p *= 10;
+  }
+
+  return out;
+}
+
 int main(int argc, char ** argv) {
 
   int opt;
@@ -27,12 +47,12 @@ int main(int argc, char ** argv) {
   while ((opt = getopt(argc, argv, "bs")) != -1) {
     switch(opt) {
       case 'b':
-        bbs = optarg;
+        bbs = strToInt(optarg);
         cout << "option b = " << optarg << endl;
         cout << "bbs = " << bbs << endl;
         break;
       case 's':
-        ml = optarg;
+        ml = strToInt(optarg);
         cout << "option s = " << optarg << endl;
         cout << "ml = " << ml << endl;
         break;
