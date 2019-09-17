@@ -25,6 +25,7 @@ int strToInt(char* str) {
   int p = 1;
 
   for (int i = (sizeof(str) / sizeof(str[0]))-1; i >= 0; i--) {
+    cout << sizeof(str) / sizeof(str[0]) << endl;
     c = str[i];
 
     if (c < 48 || c > 57) {
