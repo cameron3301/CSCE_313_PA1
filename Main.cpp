@@ -42,18 +42,17 @@ int strToInt(string str) {
 int main(int argc, char ** argv) {
 
   int opt;
-  string b, l;
   int bbs = 0;
   int ml = 0;
 
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
       case 'b':
-        b(optarg);
+        string b(optarg);
         bbs = strToInt(b);
         break;
       case 's':
-        l(optarg);
+        string l(optarg);
         ml = strToInt(l);
         break;
       case '?':
@@ -64,7 +63,7 @@ int main(int argc, char ** argv) {
 
   cout << "bbs = " << bbs << endl;
   cout << "ml = " << ml << endl << endl;
-
+  /*
   int i = 0;
   char* temp = bbs;
   char* temp2 = ml;
@@ -78,6 +77,7 @@ int main(int argc, char ** argv) {
   cout << sizeof(temp) << " / " << sizeof(temp[0]) << endl;
   cout << sizeof(temp2) << " / " << sizeof(temp2[0]) << endl;
   i++;
+  */
   
 
 
