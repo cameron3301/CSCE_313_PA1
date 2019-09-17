@@ -20,19 +20,19 @@ void easytest(BuddyAllocator* ba){
 }
 
 int strToInt(char* str) {
-  int char;
+  int c;
   int out = 0;
   int p = 1;
 
   for (int i = str.length()-1; i >= 0; i--) {
-    char = str[i];
+    c = str[i];
 
-    if (char < 48 || char > 57) {
+    if (c < 48 || c > 57) {
       // throw error
       // input must be alpha-numeric
     }
 
-    out += (char-48) * p;
+    out += (c-48) * p;
     p *= 10;
   }
 
