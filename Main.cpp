@@ -24,7 +24,7 @@ int strToInt(char* str) {
   int out = 0;
   int p = 1;
 
-  for (int i = str.size()-1; i >= 0; i--) {
+  for (int i = (sizeof(str) / sizeof(str[0]))-1; i >= 0; i--) {
     c = str[i];
 
     if (c < 48 || c > 57) {
