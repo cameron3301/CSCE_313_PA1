@@ -1,7 +1,15 @@
 #include "BuddyAllocator.h"
 #include <vector>
 #include <iostream>
+#include <stdexcept>
 using namespace std;
+
+
+struct InvalidBlockError : public exception {
+	virtual const char* what() const throw()
+	{ return "You have passed an invalid block into a function."; }
+};
+
 
 int f(int b, int s) {
   int i = 0;
@@ -57,7 +65,7 @@ char* BuddyAllocator::alloc(int _length) {
     while (FreeList[j].head == NULL) {
       j++;
       if (j == FreeList.size()) {
-        // throw error
+        throw InvalidBlockError();
       }
     }
 
@@ -144,6 +152,7 @@ BlockHeader* BuddyAllocator::merge(BlockHeader* block1, BlockHeader* block2) {
   if (!arebuddies(block1, block2)) {
     // Throw error
     // blocks must be buddies
+    throw InvalidBlockError();
   }
 
   char* chp1 = (char*)block1;
@@ -163,6 +172,7 @@ BlockHeader* BuddyAllocator::merge(BlockHeader* block1, BlockHeader* block2) {
 
   // Throw error
   // something went wrong
+  throw InvalidBlockError();
 }
 
 
