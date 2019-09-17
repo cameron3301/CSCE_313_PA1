@@ -65,8 +65,10 @@ int main(int argc, char ** argv) {
   char* temp = bbs;
   char* temp2 = ml;
   while (i < 20) {
-    cout << *temp << " - " << temp2 << endl;
+    cout << *temp << " - " << *temp2 << endl;
     i++;
+    temp++;
+    temp2++;
   }
 
 
