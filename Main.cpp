@@ -21,22 +21,18 @@ void easytest(BuddyAllocator* ba){
 
 }
 
-int strToInt(char* str) {
-  int c;
+int strToInt(string str) {
+  int ascii;
   int out = 0;
   int p = 1;
 
-  for (int i = (sizeof(str) / sizeof(str[0]))-1; i >= 0; i--) {
-    cout << sizeof(str) / sizeof(str[0]) << endl;
-    cout << str << endl;
-    c = str[i];
-
-    if (c < 48 || c > 57) {
+  for (int i = str.length() - 1; i >= 0 ; i--) {
+    ascii = str.at(i);
+    if (ascii < 48 || ascii > 57) {
       // throw error
-      // input must be alpha-numeric
+      // values must be alpha-numeric
     }
-
-    out += (c-48) * p;
+    out += (ascii - 48) * p;
     p *= 10;
   }
 
@@ -46,22 +42,28 @@ int strToInt(char* str) {
 int main(int argc, char ** argv) {
 
   int opt;
-  char* bbs;
-  char* ml;
+  string b, l;
+  int bbs = 0;
+  int ml = 0;
 
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
       case 'b':
-        bbs = optarg;
+        b(optarg);
+        bbs = strToInt(b);
         break;
       case 's':
-        ml = optarg;
+        l(optarg);
+        ml = strToInt(l);
         break;
       case '?':
         cout << "oops" << endl;
         break;
     }
   }
+
+  cout << "bbs = " << bbs << endl;
+  cout << "ml = " << ml << endl << endl;
 
   int i = 0;
   char* temp = bbs;
