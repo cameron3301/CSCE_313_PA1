@@ -49,12 +49,12 @@ int main(int argc, char ** argv) {
   while ((opt = getopt(argc, argv, "bs")) != -1) {
     switch(opt) {
       case 'b':
-        bbs = strToInt(optarg);
+        // bbs = strToInt(optarg);
         cout << "option b = " << optarg << endl;
         cout << "bbs = " << bbs << endl;
         break;
       case 's':
-        ml = strToInt(optarg);
+        // ml = strToInt(optarg);
         cout << "option s = " << optarg << endl;
         cout << "ml = " << ml << endl;
         break;
