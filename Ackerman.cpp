@@ -1,6 +1,6 @@
 #include<iostream>
-#include<sys/time.h>
-#include<assert.h>
+#include <sys/time.h>
+#include <assert.h>
 #include "Ackerman.h"
 #include <string>
 #include <cstring>
