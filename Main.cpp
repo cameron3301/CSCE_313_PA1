@@ -25,12 +25,9 @@ void easytest(BuddyAllocator* ba){
 }
 
 
-
 // convert a character array of numbers to an integer
 int charsToInt(char* c) {
   string s(c);
-  cout << "s = " << s << endl;
-
   stringstream foo(s);
 
   int out = 0;
@@ -55,16 +52,11 @@ bool powerOfTwo(int val) {
 
 // ...
 void validateInputArguments(int block_size, int mem_len) {
-
-  cout << "11111" << endl;
-
   // Test 1: is `block_size` a power of 2
   if (!powerOfTwo(block_size)) {
     // throw error
     throw invalid_argument("Input received for Basic Block Size is not a power of 2");
   }
-
-  cout << "22222" << endl;
 
   // Test 2: is `mem_len` a power of 2
   if (!powerOfTwo(mem_len)) {
@@ -72,23 +64,17 @@ void validateInputArguments(int block_size, int mem_len) {
     throw invalid_argument("Input received for Memory Length is not a power of 2");
   }
 
-  cout << "33333" << endl;
-
   // Test 3: is `mem_len` greater than `block_size`
   if (mem_len <= block_size) {
     // throw error
     throw invalid_argument("Value of Basic Block Size may not be greater than that of Memory Length");
   }
 
-  cout << "44444" << endl;
-
   // Test 4: is `mem_len` greater than 128 * 1024 * 1024
   if (mem_len < (128 * 1024 * 1024)) {
     // throw error
     throw invalid_argument("Value of Memory Length must be greater than or equal to 128 * 1024 * 1024 bytes");
   }
-
-  cout << "55555" << endl;
 }
 
 
@@ -117,37 +103,29 @@ int main(int argc, char ** argv) {
   int basic_block_size;
   int memory_length;
 
+  // if value for basic block size was given, assign it to basic_block_size
   if (block_size_chars) {
     basic_block_size = charsToInt(block_size_chars);
   } else {
     basic_block_size = 128;
   }
 
+  // if value for memory length was given, assign it to memory_length
   if (mem_length_chars) {
     memory_length = charsToInt(mem_length_chars);
   } else {
     memory_length = 128 * 1024 * 1024;
-  }
-
-  cout << "AAAAAA" << endl;
-
-  cout << "basic_block_size = " << basic_block_size << endl;
-  cout << "memory_length = " << memory_length << endl << endl;
+  }  
 
   validateInputArguments(basic_block_size, memory_length);
 
-
-
-
-
   cout << "basic_block_size = " << basic_block_size << endl;
   cout << "memory_length = " << memory_length << endl << endl;
 
 
 
 
-
-  /* 
+  
   int basic_block_size = 128, memory_length = 128 * 1024 * 1024;
 
   // create memory manager
@@ -163,5 +141,4 @@ int main(int argc, char ** argv) {
   
   // destroy memory manager
   delete allocator;
-  */
 }
