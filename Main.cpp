@@ -131,6 +131,9 @@ int main(int argc, char ** argv) {
 
   cout << "AAAAAA" << endl;
 
+  cout << "basic_block_size = " << basic_block_size << endl;
+  cout << "memory_length = " << memory_length << endl << endl;
+
   validateInputArguments(basic_block_size, memory_length);
 
 
