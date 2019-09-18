@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string>
+#include <iostream>
+#include <sstream>
 #include "Ackerman.h"
 #include "BuddyAllocator.h"
 using namespace std;
@@ -26,53 +28,57 @@ int strToInt(string str) {
   return 1;
 }
 
+
+// convert a character array of numbers to an integer
+long charsToLong(char* c) {
+  string s(c);
+
+  stringstream foo(s);
+
+  long out = 0;
+  foo >> out;
+
+  return out;
+}
+
+
 int main(int argc, char ** argv) {
 
   int opt;
-  int bbs = 0;
-  int ml = 0;
+  long block_size_long = 0;
+  long mem_length_long = 0;
 
-  char* b = NULL;
-  char* s = NULL;
+  char* block_size_chars = NULL;
+  char* mem_length_chars = NULL;
 
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
-    switch(opt) {
+    switch(opt)
+    {
       case 'b':
-        b = optarg;
-        // bbs = strToInt(b);
+        block_size_chars = optarg;
         break;
       case 's':
-        s = optarg;
-        // ml = strToInt(l);
+        mem_length_chars = optarg;
         break;
       case '?':
-        cout << "oops" << endl;
+        // ...
         break;
     }
   }
-  /*
-  if (b) {
-
-  }*/
-
-  cout << "bbs = " << bbs << endl;
-  cout << "ml = " << ml << endl << endl;
-  /*
-  int i = 0;
-  char* temp = bbs;
-  char* temp2 = ml;
-
-  string s1(temp);
-  string s2(temp2);
-  cout << s1 << " - " << s1.length() << endl;
-  cout << s2 << " - " << s2.length() << endl << endl;
-
-  cout << temp << " - " << temp2 << endl;
-  cout << sizeof(temp) << " / " << sizeof(temp[0]) << endl;
-  cout << sizeof(temp2) << " / " << sizeof(temp2[0]) << endl;
-  i++;
-  */
   
+  if (block_size_chars) {
+    block_size_long = charsToLong(block_size_chars);
+  }
+
+  if (mem_length_chars) {
+    mem_length_long = charsToLong(mem_length_chars);
+  }
+
+  cout << "block_size_long = " << block_size_long << endl;
+  cout << "mem_length_long = " << mem_length_long << endl << endl;
+
+
+
 
 
   /* 
