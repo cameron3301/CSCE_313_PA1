@@ -32,21 +32,28 @@ int main(int argc, char ** argv) {
   int bbs = 0;
   int ml = 0;
 
+  char* b = "";
+  char* s = "";
+
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
       case 'b':
-        string b(optarg);
-        bbs = strToInt(b);
+        b = optarg;
+        // bbs = strToInt(b);
         break;
       case 's':
-        string l(optarg);
-        ml = strToInt(l);
+        l = optarg;
+        // ml = strToInt(l);
         break;
       case '?':
         cout << "oops" << endl;
         break;
     }
   }
+  /*
+  if (b != "") {
+
+  }*/
 
   cout << "bbs = " << bbs << endl;
   cout << "ml = " << ml << endl << endl;
