@@ -32,6 +32,7 @@ int strToInt(string str) {
 // convert a character array of numbers to an integer
 long charsToLong(char* c) {
   string s(c);
+  cout << "s = " << s << endl;
 
   stringstream foo(s);
 
