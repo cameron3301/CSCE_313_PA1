@@ -70,11 +70,13 @@ void validateInputArguments(int block_size, int mem_len) {
     throw invalid_argument("Value of Basic Block Size may not be greater than that of Memory Length");
   }
 
+/*
   // Test 4: is `mem_len` greater than 128 * 1024 * 1024
   if (mem_len < (128 * 1024 * 1024)) {
     // throw error
     throw invalid_argument("Value of Memory Length must be greater than or equal to 128 * 1024 * 1024 bytes");
   }
+*/
 }
 
 
