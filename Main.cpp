@@ -32,8 +32,8 @@ int main(int argc, char ** argv) {
   int bbs = 0;
   int ml = 0;
 
-  char* b = "";
-  char* s = "";
+  char* b = NULL;
+  char* s = NULL;
 
   while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
     switch(opt) {
@@ -42,7 +42,7 @@ int main(int argc, char ** argv) {
         // bbs = strToInt(b);
         break;
       case 's':
-        l = optarg;
+        s = optarg;
         // ml = strToInt(l);
         break;
       case '?':
@@ -51,7 +51,7 @@ int main(int argc, char ** argv) {
     }
   }
   /*
-  if (b != "") {
+  if (b) {
 
   }*/
 
