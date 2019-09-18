@@ -22,21 +22,8 @@ void easytest(BuddyAllocator* ba){
 }
 
 int strToInt(string str) {
-  int ascii;
-  int out = 0;
-  int p = 1;
-
-  for (int i = str.length() - 1; i >= 0 ; i--) {
-    ascii = str.at(i);
-    if (ascii < 48 || ascii > 57) {
-      // throw error
-      // values must be alpha-numeric
-    }
-    out += (ascii - 48) * p;
-    p *= 10;
-  }
-
-  return out;
+  cout << "str = " << str << endl;
+  return 1;
 }
 
 int main(int argc, char ** argv) {
