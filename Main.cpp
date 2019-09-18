@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include "Ackerman.h"
 #include "BuddyAllocator.h"
 using namespace std;
@@ -23,31 +24,66 @@ void easytest(BuddyAllocator* ba){
 
 }
 
-int strToInt(string str) {
-  cout << "str = " << str << endl;
-  return 1;
-}
 
 
 // convert a character array of numbers to an integer
-long charsToLong(char* c) {
+int charsToInt(char* c) {
   string s(c);
   cout << "s = " << s << endl;
 
   stringstream foo(s);
 
-  long out = 0;
+  int out = 0;
   foo >> out;
 
   return out;
 }
 
 
+// returns true if input is a power of 2
+bool powerOfTwo(int val) {
+  int i = 2;
+
+  // increment `i` to the next power of 2
+  while (i < val) {
+    i *= 2;
+  }
+
+  return (i == val);
+}
+
+
+// ...
+void validateInputArguments(int block_size, int mem_len) {
+  // Test 1: is `block_size` a power of 2
+  if (!powerOfTwo(block_size)) {
+    // throw error
+    throw invalid_argument("Input received for Basic Block Size is not a power of 2");
+  }
+
+  // Test 2: is `mem_len` a power of 2
+  if (!powerOfTwo(mem_len)) {
+    // throw error
+    throw invalid_argument("Input received for Memory Length is not a power of 2");
+  }
+
+  // Test 3: is `mem_len` greater than `block_size`
+  if (mem_len <= block_size) {
+    // throw error
+    throw invalid_argument("Value of Basic Block Size may not be greater than that of Memory Length");
+  }
+
+  // Test 4: is `mem_len` greater than 128 * 1024 * 1024
+  if (mem_len < (128 * 1024 * 1024)) {
+    // throw error
+    throw invalid_argument("Value of Memory Length must be greater than or equal to 128 * 1024 * 1024 bytes");
+  }
+}
+
+
 int main(int argc, char ** argv) {
 
   int opt;
-  long block_size_long = 0;
-  long mem_length_long = 0;
 
   char* block_size_chars = NULL;
   char* mem_length_chars = NULL;
@@ -67,16 +103,29 @@ int main(int argc, char ** argv) {
     }
   }
   
+  int basic_block_size;
+  int memory_length;
+
   if (block_size_chars) {
-    block_size_long = charsToLong(block_size_chars);
+    basic_block_size = charsToInt(block_size_chars);
+  } else {
+    basic_block_size = 128;
   }
 
   if (mem_length_chars) {
-    mem_length_long = charsToLong(mem_length_chars);
+    memory_length = charsToInt(mem_length_chars);
+  } else {
+    memory_length = 128 * 1024 * 1024;
   }
 
-  cout << "block_size_long = " << block_size_long << endl;
-  cout << "mem_length_long = " << mem_length_long << endl << endl;
+  validateInputArguments(basic_block_size, memory_length);
+
+
+
+
+
+  cout << "basic_block_size = " << basic_block_size << endl;
+  cout << "memory_length = " << memory_length << endl << endl;
 
 
 
