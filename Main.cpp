@@ -70,13 +70,11 @@ void validateInputArguments(int block_size, int mem_len) {
     throw invalid_argument("Value of Basic Block Size may not be greater than that of Memory Length");
   }
 
-/*
-  // Test 4: is `mem_len` greater than 128 * 1024 * 1024
-  if (mem_len < (128 * 1024 * 1024)) {
+  // Test 4: is the value assigned to `mem_len` or `block_size` greater than the size of an integer
+  if ((mem_len == 2147483647) || (block_size == 2147483647)) {
     // throw error
-    throw invalid_argument("Value of Memory Length must be greater than or equal to 128 * 1024 * 1024 bytes");
+    throw invalid_argument("At least one input value given was too large");
   }
-*/
 }
 
 
@@ -87,7 +85,7 @@ int main(int argc, char ** argv) {
   char* block_size_chars = NULL;
   char* mem_length_chars = NULL;
 
-  while ((opt = getopt(argc, argv, "b:cs:t")) != -1) {
+  while ((opt = getopt(argc, argv, ":b:s:")) != -1) {
     switch(opt)
     {
       case 'b':
@@ -96,8 +94,11 @@ int main(int argc, char ** argv) {
       case 's':
         mem_length_chars = optarg;
         break;
+      case ':':
+        throw invalid_argument("Missing input value");
+        break;
       case '?':
-        // ...
+        throw invalid_argument("Unknown tag");
         break;
     }
   }
