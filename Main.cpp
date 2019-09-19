@@ -52,28 +52,28 @@ bool powerOfTwo(int val) {
 
 // ...
 void validateInputArguments(int block_size, int mem_len) {
-  // Test 1: is `block_size` a power of 2
+  // Test 1: is the value assigned to `mem_len` or `block_size` greater than the size of an integer
+  if ((mem_len == 2147483647) || (block_size == 2147483647)) {
+    // throw error
+    throw invalid_argument("At least one input value given was too large");
+  }
+
+  // Test 2: is `block_size` a power of 2
   if (!powerOfTwo(block_size)) {
     // throw error
     throw invalid_argument("Input received for Basic Block Size is not a power of 2");
   }
 
-  // Test 2: is `mem_len` a power of 2
+  // Test 3: is `mem_len` a power of 2
   if (!powerOfTwo(mem_len)) {
     // throw error
     throw invalid_argument("Input received for Memory Length is not a power of 2");
   }
 
-  // Test 3: is `mem_len` greater than `block_size`
+  // Test 4: is `mem_len` greater than `block_size`
   if (mem_len <= block_size) {
     // throw error
     throw invalid_argument("Value of Basic Block Size may not be greater than that of Memory Length");
-  }
-
-  // Test 4: is the value assigned to `mem_len` or `block_size` greater than the size of an integer
-  if ((mem_len == 2147483647) || (block_size == 2147483647)) {
-    // throw error
-    throw invalid_argument("At least one input value given was too large");
   }
 }
 
